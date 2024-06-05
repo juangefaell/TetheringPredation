@@ -8,7 +8,7 @@ library(pavo) # Basic spectra data processing
 library(stringr) # Plot spectra by grouping factors with shaded area representing confidence interval
 
 ####### Dataset #######
-setwd("/Users/juangefaellborras/Desktop/Juancho/Work/Research/Littorina/Projects/TetheringPredation/TP_4ManuScript/TP_MS_OpenData&Scripts/Data") # Set the directory of the dataset file
+setwd("../Data") # Set the directory of the dataset file
 read.csv("Data_RefSpec.csv") # Read the ReflectanceSpectrometry dataset
 
 ####### Data handling and overview #######
