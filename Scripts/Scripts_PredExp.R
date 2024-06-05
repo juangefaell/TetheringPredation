@@ -13,7 +13,7 @@ library(Matrix) # For dealing with matrices
 library(FSA) # Dunn test (Kruskal-Wallis post hoc)
 
 ####### Dataset #######
-setwd("/Users/juangefaellborras/Desktop/Juancho/Work/Research/Littorina/Projects/TetheringPredation/TP_4ManuScript/TP_MS_OpenData&Scripts/Data") # Set the directory of the dataset file
+setwd("../Data") # Set the directory of the dataset file
 read.csv("Data_PredExp.csv") # Read the PredationExperiment dataset
 
 ####### Data handling and overview #######
