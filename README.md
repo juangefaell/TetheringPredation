@@ -139,8 +139,8 @@ ColorMorphNum: number assigned to each color morph.
  
 	1=Lutea.
 	2=Nigra.
-	3=Lineata_Aguncheiro
-	4=Lineata_Silleiro
+	3=Lineata_Aguncheiro.
+	4=Lineata_Silleiro.
 	
 **Locality**: locality from which the snail comes; Aguncheiro (for Lutea, Nigra, and half of the Lineata), Silleiro (for the remaining half of Lineata). 
 
