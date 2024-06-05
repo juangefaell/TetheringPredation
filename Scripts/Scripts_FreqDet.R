@@ -6,7 +6,7 @@
 library(tidyverse) # Basic plots and statistical analyses
 
 ####### Dataset #######
-setwd("/Users/juangefaellborras/Desktop/Juancho/Work/Research/Littorina/Projects/TetheringPredation/TP_4ManuScript/TP_MS_OpenData&Scripts/Data") # Set the directory of the dataset file
+setwd("../Data") # Set the directory of the dataset file
 read.csv("Data_FreqDet.csv") # Read the FrequencyDetermination dataset
 
 ####### Data handling and overview #######
