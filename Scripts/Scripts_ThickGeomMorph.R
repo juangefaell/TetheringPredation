@@ -8,7 +8,7 @@ library(car) # ANOVAs
 library(effectsize) # Effect size of ANOVA of RW1 ~ ColorMorph_Locality
 
 ####### Dataset #######
-setwd("/Users/juangefaellborras/Desktop/Juancho/Work/Research/Littorina/Projects/TetheringPredation/TP_4ManuScript/TP_MS_OpenData&Scripts/Data") # Set the directory of the dataset file
+setwd("../Data") # Set the directory of the dataset file
 read.csv("Data_ThickGeomMorph.csv") # Read the ThicknessGeometricMorphometrics dataset
 
 ####### Data handling and overview #######
