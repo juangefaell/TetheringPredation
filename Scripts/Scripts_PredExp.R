@@ -113,7 +113,7 @@ PredExp %>%
   count(OutcomeNames_Grouped) %>%
   print() # Experiment outcomes of morphs in sessions 1, 2 
 
-####### Figure S7 /// Histogram of outcomes (grouped) per session #######
+####### Figure 4 /// Histogram of outcomes (grouped) per session #######
 ### Simplified dataset for the histogram
 PredExp_FigurePE1 <- PredExp %>% 
   group_by(Session, ColorMorph_Locality) %>% 
@@ -220,7 +220,7 @@ leveneTest(ShellLength ~ Session, data = PredExp) # Levene's test
 wilcox.test(ShellLength ~ Session, data = PredExp)
   # OUTPUT: Significant differences between sessions in shell length (morphs pooled)
 
-####### Figure S8 /// Comparison tests: Shell length between color morphs for each session #######
+####### Figure S7 /// Comparison tests: Shell length between color morphs for each session #######
 ### Boxplots
 PredExp %>% 
   ggplot(aes(x = ColorMorph_Locality, y = ShellLength, fill = ColorMorph_Locality)) +
@@ -310,7 +310,7 @@ PredExp %>%
   print()
   # OUTPUT: Significant differences 
 
-####### Table S3 /// Logistic Regressions on Preyed + Chipped per session #######
+####### Table S5 /// Logistic Regressions on Preyed + Chipped per session #######
 # Session 1
 PreyedChippedModel1 <- glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + TransectPosition, 
                           data = PredExp %>% filter(Session == 1) %>% drop_na(), family = binomial) # Logistic regression
