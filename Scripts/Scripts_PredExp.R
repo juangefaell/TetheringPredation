@@ -8,12 +8,11 @@ library(tidyverse) # Basic plots and statistical analyses
 library(car) # ANOVAs
 library(lmerTest) # Logistic regressions
 library(lme4) # Logistic regressions
-library(performance) # Nagelkerke R^2 value of logistic regression models
 library(Matrix) # For dealing with matrices
 library(FSA) # Dunn test (Kruskal-Wallis post hoc)
 
 ####### Dataset #######
-setwd("../Data") # Set the directory of the dataset file
+setwd("") # Set the directory of the dataset file
 read.csv("Data_PredExp.csv") # Read the PredationExperiment dataset
 
 ####### Data handling and overview #######
@@ -255,34 +254,33 @@ PredExp %>%
   kruskal.test(ShellLength ~ ColorMorph_Locality, data = .) # Session 2
   # OUTPUT: Significant differences between color morphs in shell length (Session 2)
 
-####### Table 3 /// Logistic Regressions on the various outcomes #######
-### Response variable: Preyed
-PredExp %>%
-  drop_na() %>%                        
-  glm(Preyed ~ ColorMorph_Locality + ShellLength + Session + TransectPosition, data = ., family = binomial) %>% 
-  summary()
+####### Table 3 /// Logistic Regressions on the Preyed + Chipped outcome #######
+PreyedChippedModel <- glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + Session + TransectPosition, 
+                          data = PredExp %>% drop_na(), family = binomial) # Logistic regression
+summary(PreyedChippedModel) # Summary of the model
+exp(cbind(OR = coef(PreyedChippedModel), confint(PreyedChippedModel))) # Calculate odds ratios and 95% CI
+  # OUTPUT: Session significant predictor, ColorMorph_Locality (Lutea case) almost significant
+
+####### Table S2 /// Logistic Regressions on Preyed outcome #######
+PreyedModel <- glm(Preyed ~ ColorMorph_Locality + ShellLength + Session + TransectPosition, 
+                   data = PredExp %>% drop_na(), family = binomial) # Logistic regression
+summary(PreyedModel) # Summary of the model
+exp(cbind(OR = coef(PreyedModel), confint(PreyedModel))) # Calculate odds ratios and 95% CI
   # OUTPUT: No significant predictors
 
-### Response variable: Chipped
-PredExp %>%
-  drop_na() %>%                        
-  glm(Chipped ~ ColorMorph_Locality + ShellLength + Session + TransectPosition, data = ., family = binomial) %>% 
-  summary()
+####### Table S3 /// Logistic Regressions on Chipped outcome ####### 
+ChippedModel <- glm(Chipped ~ ColorMorph_Locality + ShellLength + Session + TransectPosition, 
+                   data = PredExp %>% drop_na(), family = binomial) # Logistic regression
+summary(ChippedModel) # Summary of the model
+exp(cbind(OR = coef(ChippedModel), confint(ChippedModel))) # Calculate odds ratios and 95% CI
   # OUTPUT: Intercept, ShellLength, and Session significant
 
-### Response variable: EmptyShell
-PredExp %>%
-  drop_na() %>%                        
-  glm(EmptyShell ~ ColorMorph_Locality + ShellLength + Session + TransectPosition, data = ., family = binomial) %>% 
-  summary() 
+####### Table S4 /// Logistic Regressions on EmptyShell outcome #######     
+EmptyShellModel <- glm(EmptyShell ~ ColorMorph_Locality + ShellLength + Session + TransectPosition, 
+                    data = PredExp %>% drop_na(), family = binomial) # Logistic regression
+summary(EmptyShellModel) # Summary of the model
+exp(cbind(OR = coef(EmptyShellModel), confint(EmptyShellModel))) # Calculate odds ratios and 95% CI
   # OUTPUT: No significant predictors
-
-### Response variable: Preyed + Chipped (dummy variable of OutcomeNames=PreyedAlive+PreyedDead+Chipped) 
-PredExp %>%
-  drop_na() %>%                        
-  glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + Session + TransectPosition, data = ., family = binomial) %>% 
-  summary()
-  # OUTPUT: Session significant predictor, ColorMorph_Locality (Lutea case) almost significant
 
 ####### Comparison tests of outcomes per color morph for Session 1 #######
 ### Preyed
@@ -312,21 +310,20 @@ PredExp %>%
   print()
   # OUTPUT: Significant differences 
 
-####### Table S2 /// Logistic Regressions on Preyed + Chipped per session #######
-### PreyedChipped per session 
+####### Table S3 /// Logistic Regressions on Preyed + Chipped per session #######
 # Session 1
-PredExp %>%
-  filter(Session == 1) %>%
-  drop_na() %>%                        
-  glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + TransectPosition, data = ., family = binomial) %>% 
-  summary()
+PreyedChippedModel1 <- glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + TransectPosition, 
+                          data = PredExp %>% filter(Session == 1) %>% drop_na(), family = binomial) # Logistic regression
+summary(PreyedChippedModel1) # Summary of the model
+exp(cbind(OR = coef(PreyedChippedModel1), confint(PreyedChippedModel1))) # Calculate odds ratios and 95% CI
+  # OUTPUT: Intercept and ColorMorph_Locality (Lutea case) significant predictor
 
 # Session 2
-PredExp %>%
-  filter(Session == 2) %>%
-  drop_na() %>%                        
-  glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + TransectPosition, data = ., family = binomial) %>% 
-  summary()
+PreyedChippedModel2 <- glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + TransectPosition, 
+                           data = PredExp %>% filter(Session == 2) %>% drop_na(), family = binomial) # Logistic regression
+summary(PreyedChippedModel2) # Summary of the model
+exp(cbind(OR = coef(PreyedChippedModel2), confint(PreyedChippedModel2))) # Calculate odds ratios and 95% CI
+  # OUTPUT: No significant predictors
 
 ####### Chi-squared or Fisher test of outcomes between color morphs (sessions 1, 2 pooled) ####### 
 ## Preyed
