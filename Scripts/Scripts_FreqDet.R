@@ -107,18 +107,19 @@ FreqDet_Figure2 <- FreqDet %>%
 
 ### Graph
 FreqDet_Figure2 %>% 
+  subset(ColorMorph != "Albida") %>%
   ggplot(aes(x = ColorMorph, y = ScarsToMorphRatio)) +
-  geom_point(size = 3, stroke = 1, aes(colour = ColorMorph), show.legend = FALSE) +
+  geom_point(size = 4, stroke = 1, aes(colour = ColorMorph), show.legend = FALSE) +
   geom_hline(yintercept = 1, linetype = "dashed") +
   labs(x = "Color Morph", y = "Scars to Morph Frequency Ratio") +
   theme_bw() +
   ylim(0, 5) +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(), 
-        axis.text.x = element_text(color = "black", margin = margin(t=5), size=11),
-        axis.text.y = element_text(color = "black", margin = margin(r=4),size=11),
-        axis.title.x = element_text(margin = margin(t = 12), size = 12), 
-        axis.title.y = element_text(margin = margin(r = 12), size = 11),
+        axis.text.x = element_text(color = "black", margin = margin(t=5), size=15),
+        axis.text.y = element_text(color = "black", margin = margin(r=4),size=15),
+        axis.title.x = element_text(margin = margin(t = 12), size = 16), 
+        axis.title.y = element_text(margin = margin(r = 12), size = 16),
         plot.margin = margin(t = 10, b =10, l = 10, r = 30)) +  
   scale_x_discrete(labels = expression(italic("Lineata"), italic("Nigra"), italic("Lutea"), italic("Albida"))) +
   scale_color_manual(values = c("#E7E3DC", "#473F2D", "#F2E66E", "#F6F5ED"))
