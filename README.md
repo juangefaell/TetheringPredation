@@ -1,7 +1,7 @@
 # TetheringPredation
 
 ## Description
-Data and scripts from the article "Suggestive Evidence of Differential Predation of Littorina saxatilis Color Morphs by Marbled Rock Crabs (Pachygrapsus marmoratus) As a Contributing Maintenance Mechanism To a Color Cline: Insights From a Field Tethering Experiment", by Juan Gefaell, Ramón Vigo, and Emilio Rolán-Alvarez.
+Data and scripts from the article "Does Differential Predation of Littorina saxatilis Color Morphs Contribute to the Maintenance of a Color Cline? Insights From a Field Tethering Experiment", by Juan Gefaell, Ramón Vigo, and Emilio Rolán-Alvarez.
 
 ## Contents
 ````
