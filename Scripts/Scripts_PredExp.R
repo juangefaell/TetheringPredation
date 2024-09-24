@@ -10,6 +10,7 @@ library(lmerTest) # Logistic regressions
 library(lme4) # Logistic regressions
 library(Matrix) # For dealing with matrices
 library(FSA) # Dunn test (Kruskal-Wallis post hoc)
+library(simr)  # Power Analysis
 
 ####### Dataset #######
 setwd("") # Set the directory of the dataset file
@@ -260,6 +261,44 @@ PreyedChippedModel <- glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + Se
 summary(PreyedChippedModel) # Summary of the model
 exp(cbind(OR = coef(PreyedChippedModel), confint(PreyedChippedModel))) # Calculate odds ratios and 95% CI
   # OUTPUT: Session significant predictor, ColorMorph_Locality (Lutea case) almost significant
+
+####### Power Analysis based on results of Table 3 #######
+powerSim(PreyedChippedModel, nsim = 1000) # Power analysis of the original sample
+# OUTPUT: Power for predictor 'ColorMorph_Locality', (95% confidence interval): 60.20% (57.09, 63.25) [Likelihood ratio test, 1000 simulations, alpha = 0.05]
+
+### Power Analysis for a larger sample (n = 350, not counting simulated NAs)
+set.seed(112) # For reproducibility
+PredExp_350 <- PredExp %>%
+  sample_n(size = 350, replace = TRUE)  # Sample with replacement to get 350 rows (sample size = 350) based on our actual results
+table(PredExp_350$ColorMorph_Locality) # The number of individuals per color is not equal but reasonably similar
+PredExp_350$ColorMorph_Locality <- factor(PredExp_350$ColorMorph_Locality, 
+                                          levels = c("Lineata_Silleiro", 
+                                                     "Lineata_Aguncheiro", 
+                                                     "Nigra_Aguncheiro", 
+                                                     "Lutea_Aguncheiro")) # Ensure the factor levels are maintained in the ColorMorph_Locality variable
+PreyedChippedModel_350 <- glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + 
+                                Session + TransectPosition, 
+                              data = PredExp_350 %>% drop_na(), family = binomial) # Run the logistic regression with the increased sample
+summary(PreyedChippedModel_350) # Summary of the model with enlarged sample
+powerSim(PreyedChippedModel_350, nsim = 1000) # Power analysis of the enlarged sample (n = 350)
+# OUTPUT: Power for predictor 'ColorMorph_Locality', (95% confidence interval): 98.00% (96.93, 98.77) [Likelihood ratio test, 1000 simulations, alpha = 0.05]
+
+### Power Analysis for a even larger sample (n = 400, not counting simulated NAs)
+set.seed(111) # For reproducibility
+PredExp_400 <- PredExp %>%
+  sample_n(size = 400, replace = TRUE)  # Sample with replacement to get 400 rows (sample size = 400) based on our actual results
+table(PredExp_400$ColorMorph_Locality) # The number of individuals per color is not equal but reasonably similar
+PredExp_400$ColorMorph_Locality <- factor(PredExp_400$ColorMorph_Locality, 
+                                          levels = c("Lineata_Silleiro", 
+                                                     "Lineata_Aguncheiro", 
+                                                     "Nigra_Aguncheiro", 
+                                                     "Lutea_Aguncheiro")) # Ensure the factor levels are maintained in the ColorMorph_Locality variable
+PreyedChippedModel_400 <- glm(PreyedChipped ~ ColorMorph_Locality + ShellLength + 
+                                Session + TransectPosition, 
+                              data = PredExp_400 %>% drop_na(), family = binomial) # Run the logistic regression with the increased sample
+summary(PreyedChippedModel_400) # Summary of the model with enlarged sample
+powerSim(PreyedChippedModel_400, nsim = 1000) # Power analysis of the enlarged sample (n = 400)
+# OUTPUT: Power for predictor 'ColorMorph_Locality', (95% confidence interval): 96.20% (94.82, 97.30) [Likelihood ratio test, 1000 simulations, alpha = 0.05]
 
 ####### Table S2 /// Logistic Regressions on Preyed outcome #######
 PreyedModel <- glm(Preyed ~ ColorMorph_Locality + ShellLength + Session + TransectPosition, 
