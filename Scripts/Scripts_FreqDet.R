@@ -106,12 +106,16 @@ FreqDet_Figure2 <- FreqDet %>%
   filter(Locality == "Aguncheiro")
 
 ### Graph
+MorphColors <- c("Lineata" = "#E7E3DC",  # Set custom colors
+                     "Nigra" = "#473F2D",  
+                     "Lutea" = "#F2E66E") 
+
 FreqDet_Figure2 %>% 
   subset(ColorMorph != "Albida") %>%
   ggplot(aes(x = ColorMorph, y = ScarsToMorphRatio)) +
-  geom_point(size = 4, stroke = 1, aes(colour = ColorMorph), show.legend = FALSE) +
-  geom_hline(yintercept = 1, linetype = "dashed") +
-  labs(x = "Color Morph", y = "Scars to Morph Frequency Ratio") +
+  geom_point(size = 5, stroke = 1, aes(fill = ColorMorph), shape = 21, show.legend = FALSE) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "red") +
+  labs(x = "Color morph", y = "Scars:morph frequency ratio") +
   theme_bw() +
   ylim(0, 5) +
   theme(panel.grid.major = element_blank(),
@@ -122,4 +126,4 @@ FreqDet_Figure2 %>%
         axis.title.y = element_text(margin = margin(r = 12), size = 16),
         plot.margin = margin(t = 10, b =10, l = 10, r = 30)) +  
   scale_x_discrete(labels = expression(italic("Lineata"), italic("Nigra"), italic("Lutea"), italic("Albida"))) +
-  scale_color_manual(values = c("#E7E3DC", "#473F2D", "#F2E66E", "#F6F5ED"))
+  scale_fill_manual(values = MorphColors)
