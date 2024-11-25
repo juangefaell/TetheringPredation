@@ -122,7 +122,7 @@ PredExp_FigurePE1 <- PredExp %>%
   print()
 
 PredExp_FiguresPE1PE4_CustomOrder <- c("Alive", "Preyed", "Chipped", "EmptyShell", "EpoxyOnlyLost_NA") # Set the desired order of variables
-PredExp_FiguresPE1PE4_CustomLabels <- c("Alive", "Preyed", "Chipped", "Empty Shell", "Lost (All)") # Set the corresponding names for variables
+PredExp_FiguresPE1PE4_CustomLabels <- c("Alive", "Preyed", "Chipped", "Empty shell", "Lost (all)") # Set the corresponding names for variables
 
 ### Histogram
 PredExp_FigurePE1 %>%
@@ -132,7 +132,7 @@ PredExp_FigurePE1 %>%
        y = "Frequency", 
        fill = "Color Morph") +
   scale_fill_manual(values = c("grey", "#E7E3DC","#473F2D", "#F2E66E"),
-                    labels = c("Lineata (Autochthonous)", "Lineata (Allochthonous)", "Nigra", "Lutea")) +
+                    labels = c("Lineata (autochthonous)", "Lineata (allochthonous)", "Nigra", "Lutea")) +
   theme_test() +
   theme(panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
