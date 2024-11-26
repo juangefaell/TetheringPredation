@@ -227,7 +227,7 @@ PredExp %>%
   ggplot(aes(x = ColorMorph_Locality, y = ShellLength, fill = ColorMorph_Locality)) +
   geom_boxplot(alpha = 0.7, outlier.shape = NA) +
   geom_jitter(shape = 16, position = position_jitter(0.1), alpha = 0.5, color = "black") +
-  labs(x = "Color morph",
+  labs(x = "Colour morph",
        y = "Shell length (mm)",
        fill = "Color morph") +
   scale_fill_manual(values = c("grey", "#E7E3DC", "#473F2D", "#F2E66E")) +
