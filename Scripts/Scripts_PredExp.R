@@ -13,7 +13,7 @@ library(FSA) # Dunn test (Kruskal-Wallis post hoc)
 library(simr)  # Power Analysis
 
 ####### Dataset #######
-setwd("/Users/juangefaellborras/Desktop/Juancho/Work/Research/Research_OngoingStudies/Research_OngoingStudies_Leading/TetheringPredation/TP_5Submission&PeerReview/TP_SPR_2Round2/TP_SPR_R2_OpenData&Scripts/Data") # Set the directory of the dataset file
+setwd("") # Set the directory of the dataset file
 read.csv("Data_PredExp.csv") # Read the PredationExperiment dataset
 
 ####### Data handling and overview #######
