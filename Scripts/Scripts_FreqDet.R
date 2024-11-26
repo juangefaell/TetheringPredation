@@ -115,7 +115,7 @@ FreqDet_Figure2 %>%
   ggplot(aes(x = ColorMorph, y = ScarsToMorphRatio)) +
   geom_point(size = 5, stroke = 1, aes(fill = ColorMorph), shape = 21, show.legend = FALSE) +
   geom_hline(yintercept = 1, linetype = "dashed", color = "red") +
-  labs(x = "Color morph", y = "Scars:morph frequency ratio") +
+  labs(x = "Colour morph", y = "Scars:morph frequency ratio") +
   theme_bw() +
   ylim(0, 5) +
   theme(panel.grid.major = element_blank(),
