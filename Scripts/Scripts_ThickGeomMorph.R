@@ -8,7 +8,7 @@ library(car) # ANOVAs
 library(effectsize) # Effect size of ANOVA of RW1 ~ ColorMorph_Locality
 
 ####### Dataset #######
-setwd("../Data") # Set the directory of the dataset file
+setwd("/Users/juangefaellborras/Desktop/Juancho/Work/Research/Research_OngoingStudies/Research_OngoingStudies_Leading/TetheringPredation/TP_5Submission&PeerReview/TP_SPR_2Round2/TP_SPR_R2_OpenData&Scripts/Data") # Set the directory of the dataset file
 read.csv("Data_ThickGeomMorph.csv") # Read the ThicknessGeometricMorphometrics dataset
 
 ####### Data handling and overview #######
@@ -64,9 +64,9 @@ ThickGeomMorph %>%
   ggplot(aes(x = ColorMorph_Locality, y = RW1, fill = ColorMorph_Locality)) +
   geom_boxplot(alpha = 0.7, outlier.shape = NA) +
   geom_jitter(shape = 16, position = position_jitter(0.1), alpha = 0.5, color = "black") +
-  labs(x = "Color Morph",
-       y = "Relative Warp 1",
-       fill = "Color Morph") +
+  labs(x = "Color morph",
+       y = "Relative warp 1",
+       fill = "Color morph") +
   scale_fill_manual(values = c("grey", "#E7E3DC", "#473F2D", "#F2E66E")) +
   theme_classic() +
   theme(axis.text.x = element_text(color = "black", margin = margin(t=5), size=11),
@@ -75,7 +75,7 @@ ThickGeomMorph %>%
         axis.title.y = element_text(margin = margin(r = 12), size = 15),
         plot.margin = margin(t = 10, b =10, l = 10, r = 30)) +  
   scale_x_discrete(expand = c(0.08, 0.3),
-                   labels = expression(italic("Lineata")~"(Autoch.)", italic("Lineata")~"(Alloch.)", italic("Nigra"), italic("Lutea"))) +  
+                   labels = expression(italic("Lineata")~"(autoch.)", italic("Lineata")~"(alloch.)", italic("Nigra"), italic("Lutea"))) +  
   coord_cartesian(ylim = c(-0.2, 0.2)) + 
   guides(fill = "none")
 
@@ -107,9 +107,9 @@ ThickGeomMorph %>%
   ggplot(aes(x = ColorMorph_Locality, y = ShellThickness, fill = ColorMorph_Locality)) +
   geom_boxplot(alpha = 0.7, outlier.shape = NA) +
   geom_jitter(shape = 16, position = position_jitter(0.1), alpha = 0.5, color = "black") +
-  labs(x = "Color Morph",
-       y = "Shell Thickness (mm)",
-       fill = "Color Morph") +
+  labs(x = "Color morph",
+       y = "Shell thickness (mm)",
+       fill = "Color morph") +
   scale_fill_manual(values = c("grey", "#E7E3DC", "#473F2D", "#F2E66E")) +
   theme_classic() +
   theme(axis.text.x = element_text(color = "black", margin = margin(t=5), size=11),
@@ -118,7 +118,7 @@ ThickGeomMorph %>%
         axis.title.y = element_text(margin = margin(r = 12), size = 15),
         plot.margin = margin(t = 10, b =10, l = 10, r = 30)) +  
   scale_x_discrete(expand = c(0.08, 0.3),
-                   labels = expression(italic("Lineata")~"(Autoch.)", italic("Lineata")~"(Alloch.)", italic("Nigra"), italic("Lutea"))) +  
+                   labels = expression(italic("Lineata")~"(autoch.)", italic("Lineata")~"(alloch.)", italic("Nigra"), italic("Lutea"))) +  
   coord_cartesian(ylim = c(0, 1)) + 
   guides(fill = "none")
 
