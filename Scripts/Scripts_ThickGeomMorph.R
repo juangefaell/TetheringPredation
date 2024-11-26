@@ -64,7 +64,7 @@ ThickGeomMorph %>%
   ggplot(aes(x = ColorMorph_Locality, y = RW1, fill = ColorMorph_Locality)) +
   geom_boxplot(alpha = 0.7, outlier.shape = NA) +
   geom_jitter(shape = 16, position = position_jitter(0.1), alpha = 0.5, color = "black") +
-  labs(x = "Color morph",
+  labs(x = "Colour morph",
        y = "Relative warp 1",
        fill = "Color morph") +
   scale_fill_manual(values = c("grey", "#E7E3DC", "#473F2D", "#F2E66E")) +
@@ -107,7 +107,7 @@ ThickGeomMorph %>%
   ggplot(aes(x = ColorMorph_Locality, y = ShellThickness, fill = ColorMorph_Locality)) +
   geom_boxplot(alpha = 0.7, outlier.shape = NA) +
   geom_jitter(shape = 16, position = position_jitter(0.1), alpha = 0.5, color = "black") +
-  labs(x = "Color morph",
+  labs(x = "Colour morph",
        y = "Shell thickness (mm)",
        fill = "Color morph") +
   scale_fill_manual(values = c("grey", "#E7E3DC", "#473F2D", "#F2E66E")) +
