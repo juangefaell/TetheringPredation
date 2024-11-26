@@ -13,7 +13,7 @@ library(FSA) # Dunn test (Kruskal-Wallis post hoc)
 library(simr)  # Power Analysis
 
 ####### Dataset #######
-setwd("") # Set the directory of the dataset file
+setwd("/Users/juangefaellborras/Desktop/Juancho/Work/Research/Research_OngoingStudies/Research_OngoingStudies_Leading/TetheringPredation/TP_5Submission&PeerReview/TP_SPR_2Round2/TP_SPR_R2_OpenData&Scripts/Data") # Set the directory of the dataset file
 read.csv("Data_PredExp.csv") # Read the PredationExperiment dataset
 
 ####### Data handling and overview #######
@@ -227,9 +227,9 @@ PredExp %>%
   ggplot(aes(x = ColorMorph_Locality, y = ShellLength, fill = ColorMorph_Locality)) +
   geom_boxplot(alpha = 0.7, outlier.shape = NA) +
   geom_jitter(shape = 16, position = position_jitter(0.1), alpha = 0.5, color = "black") +
-  labs(x = "Color Morph",
-       y = "Shell Length (mm)",
-       fill = "Color Morph") +
+  labs(x = "Color morph",
+       y = "Shell length (mm)",
+       fill = "Color morph") +
   scale_fill_manual(values = c("grey", "#E7E3DC", "#473F2D", "#F2E66E")) +
   theme_test() +
   theme(axis.text.x = element_text(color = "black", margin = margin(t=5), size=11),
@@ -239,7 +239,7 @@ PredExp %>%
         plot.margin = margin(t = 10, b =10, l = 10, r = 30),
         strip.text = element_text(colour = "black", size = 13, face = "plain")) +  
   scale_x_discrete(expand = c(0.08, 0.3),
-                   labels = expression(italic("Lineata")~"(Autoch.)", italic("Lineata")~"(Alloch.)", italic("Nigra"), italic("Lutea"))) +  
+                   labels = expression(italic("Lineata")~"(autoch.)", italic("Lineata")~"(alloch.)", italic("Nigra"), italic("Lutea"))) +  
   coord_cartesian(ylim = c(5.5, 9.5)) + 
   guides(fill = "none") +
   facet_wrap(~ Session, nrow = 1, labeller = labeller(Session = c("1" = "Session 1", "2" = "Session 2")))
