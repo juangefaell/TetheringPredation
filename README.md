@@ -14,7 +14,7 @@ Data and scripts from the article "Does Differential Predation of Littorina saxa
 │ ├── Scripts_FreqDet.R
 │ ├── Scripts_PredExp.R
 │ ├── Scripts_RefSpec.R
-│ └── Data_ThickGeomMorph.R
+│ └── Scripts_ThickGeomMorph.R
 └── README.md
 ````
 
